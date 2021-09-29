@@ -1,0 +1,13 @@
+{
+    "name": "default",
+    "type": "postgres",
+    "url": "postgres://user:password@host:PORT/database",
+    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "synchronize": false,
+    "ssl": true,
+    "extra": {
+        "ssl": {
+            "rejectUnauthorized": false
+        }
+    }
+}
