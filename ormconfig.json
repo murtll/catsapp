@@ -3,7 +3,7 @@
     "type": "postgres",
     "url": "postgres://user:password@host:PORT/database",
     "entities": ["dist/**/*.entity{.ts,.js}"],
-    "synchronize": false,
+    "synchronize": true,
     "ssl": true,
     "extra": {
         "ssl": {

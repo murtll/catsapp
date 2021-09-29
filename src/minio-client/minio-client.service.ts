@@ -2,10 +2,11 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
 import { MinioService } from 'nestjs-minio-client'
 import { BufferedFile } from './file.interface'
 import * as crypto from 'crypto'
+import { config } from './config'
 
 @Injectable()
 export class MinioClientService {
-  private readonly baseBucket = 'cats-test'
+  private readonly baseBucket = config.baseBucket
 
   public get client() {
     return this.minio.client
@@ -46,6 +47,8 @@ export class MinioClientService {
       }
     )
 
-    return `192.168.0.190:9000/${baseBucket}/${filename}`
+    return `${config.useSSL ? 'https' : 'http'}://${config.endPoint}:${
+      config.port
+    }/${baseBucket}/${filename}`
   }
 }

@@ -9,4 +9,5 @@ export const config = {
   useSSL: false,
   accessKey: 'minioadmin',
   secretKey: 'minioadmin',
+  baseBucket: 'cats-test',
 }

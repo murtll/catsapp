@@ -44,6 +44,7 @@ export class CatsController {
         `Cat with id ${id} doesn't exist`,
         HttpStatus.BAD_REQUEST
       )
+    return result
   }
 
   @Post()

@@ -28,7 +28,7 @@ export class Cat extends BaseEntity {
   @Type(() => Number)
   age: number
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   @Type(() => String)
   photo?: string
 
