@@ -51,6 +51,16 @@ export class CatsController {
   async addCat(@Body() cat: Cat) {
     if (cat.id)
       throw new HttpException('Must not contain id!', HttpStatus.BAD_REQUEST)
+    if (cat.booked != undefined)
+      throw new HttpException(
+        'Must not contain booked!',
+        HttpStatus.BAD_REQUEST
+      )
+    if (!(cat.age && cat.cost && cat.color && cat.breed && cat.name))
+      throw new HttpException(
+        'Must contain age, cost, color, breed and name',
+        HttpStatus.BAD_REQUEST
+      )
 
     return await this.catService.addCat(cat)
   }
@@ -77,6 +87,15 @@ export class CatsController {
 
   @Patch()
   async updateCat(@Body() cat: Cat) {
+    if (cat.booked != undefined)
+      throw new HttpException(
+        'Must not contain booked, you need to book cat through different route',
+        HttpStatus.BAD_REQUEST
+      )
+
+    if (!cat.id)
+      throw new HttpException('Must contain id', HttpStatus.BAD_REQUEST)
+
     const result = await this.catService.updateCat(cat)
     if (result.affected == 0)
       throw new HttpException(

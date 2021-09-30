@@ -29,7 +29,7 @@ export class CatService {
         id: 'ASC' as const,
       },
     }
-    if (booked != null) options['where'] = { booked: booked }
+    if (booked != undefined) options['where'] = { booked: booked }
     if (take && skip) {
       options['take'] = take
       options['skip'] = skip
