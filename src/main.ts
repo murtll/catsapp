@@ -6,11 +6,17 @@ const PORT = 8080
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
-  app.useGlobalPipes(new ValidationPipe())
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      forbidUnknownValues: true,
+    })
+  )
   app.enableCors()
   await app.listen(PORT)
+  console.log(`Server started on port ${PORT}`)
 }
 
 bootstrap()
-
-console.log(`Server started on port ${process.env.PORT}`)

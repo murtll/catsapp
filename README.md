@@ -21,7 +21,7 @@
   "color": "black",
   "breed": "siamese",
   "age": 2,
-  "photo": "host:port/hash.jpg",
+  "photo": "http://host:port/hash.jpg",
   "cost": 300.0,
   "booked": false
 }

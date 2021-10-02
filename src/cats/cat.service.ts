@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { DeleteResult, Repository, UpdateResult } from 'typeorm'
-import { Cat } from './cat.entity'
+import { AddCatDto, Cat, UpdateCatDto } from './cat.entity'
 import { MinioClientService } from '../minio-client/minio-client.service'
 import { BufferedFile } from '../minio-client/file.interface'
 
@@ -42,7 +42,7 @@ export class CatService {
     return await this.catRepository.findOne(id)
   }
 
-  async addCat(cat: Cat): Promise<Cat> {
+  async addCat(cat: AddCatDto): Promise<Cat> {
     return await this.catRepository.save(cat)
   }
 
@@ -64,7 +64,7 @@ export class CatService {
     )
   }
 
-  async updateCat(cat: Cat): Promise<UpdateResult> {
+  async updateCat(cat: UpdateCatDto): Promise<UpdateResult> {
     return await this.catRepository.update(cat.id, cat)
   }
 }
